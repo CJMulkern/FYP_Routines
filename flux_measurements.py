@@ -9,7 +9,7 @@ import pandas as pd
 import photutils.aperture as pu
 from astropy.io import fits 
 import numpy as np
-#%%#
+#%%
 
 def App_Photom(path, x_ps, y_ps):
     # Open the FITS file
@@ -69,10 +69,10 @@ def App_Photom(path, x_ps, y_ps):
 
 #%%
 
-file = pd.read_excel("C:/Users/Cjmul/OneDrive/Desktop/College, Baby/Final Year/Final Year Project/Python_Files/Apperture_path.xlsx")
+file = pd.read_excel("Apperture_path.xlsx")
 
-for i in range(13):
-    row1=file.iloc[183+i]
+for i in range(n):
+    row1=file.iloc[i]
     path = row1.Path
     x_ps = row1.x_ps
     y_ps = row1.y_ps
@@ -85,56 +85,12 @@ for i in range(13):
     x_a = A[3]
     y_a = A[4]
     
-    file.loc[183+i,'Source_flux'] = Source_flux
-    file.loc[183 + i,'Antipodal_flux'] = Antipodal_flux
-    file.loc[183 + i,'Actual_flux'] = Actual_flux
+    file.loc[i,'Source_flux'] = Source_flux
+    file.loc[i,'Antipodal_flux'] = Antipodal_flux
+    file.loc[i,'Actual_flux'] = Actual_flux
     #file.loc[i,'x_a'] = x_a
     #file.loc[i,'y_a'] = y_a
     
     print("<flux val = {0:} >".format(Actual_flux))
     
-file.to_excel("C:/Users/Cjmul/OneDrive/Desktop/College, Baby/Final Year/Final Year Project/Python_Files/Apperture_path.xlsx",index =False)
-#%%
-file = pd.read_excel("C:/Users/Cjmul/OneDrive/Desktop/College, Baby/Final Year/Final Year Project/Python_Files/Apperture_path.xlsx")
-row1=file.iloc[183]
-print(row1)
-#%%
-
-
-path = 'C:/Users/Cjmul/OneDrive/Desktop/College, Baby/Final Year/Final Year Project/Python_Files/data/output(180).fits'
-x_ps = 514.2114974
-y_ps = 481.2713808
-    
-A = App_Photom(path, x_ps, y_ps)
-    
-Source_flux = A[0]
-Antipodal_flux = A[1]
-Actual_flux = A[2] 
-x_a = A[3]
-y_a = A[4]
-
-print(A)
-#%%
-path = "C:/Users/Cjmul/OneDrive/Desktop/College, Baby/Final Year/Final Year Project/Python_Files/star_removed.fits"
-    
-A = App_Photom(path, x_ps, y_ps)
-    
-Source_flux = A[0]
-Antipodal_flux = A[1]
-Actual_flux = A[2] 
-x_a = A[3]
-y_a = A[4]
-
-print(A)
-#%%
-path = 'C:/Users/Cjmul/OneDrive - National University of Ireland, Galway/Cian_FYP_Data/Gaia DR2 5854897321965963264/Gaia_DR2_5854897321965963264_2022-02-14_I_tot.fits'
-    
-A = App_Photom(path, x_ps, y_ps)
-    
-Source_flux = A[0]
-Antipodal_flux = A[1]
-Actual_flux = A[2] 
-x_a = A[3]
-y_a = A[4]
-
-print(A)
+file.to_excel("Apperture_path.xlsx",index =False)
