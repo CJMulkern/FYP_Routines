@@ -44,12 +44,10 @@ def Gaussian_func(path, x_0, y_0, x_range, y_range):
     return x_prime, y_prime
 
 #%%
-file = pd.read_excel('C:/Users/Cjmul/OneDrive/Desktop/College, Baby/Final Year/Final Year Project/Python_Files/Pandas_path.xlsx')
+file = pd.read_excel('Pandas_path.xlsx')
 
 for i in range(13):
-    # row1 = file.iloc[i]
-    row1 = file.iloc[183+i]
-    #print(row1)
+    row1 = file.iloc[i]
     path = row1.Path
     x_0 = row1.x_0
     y_0 = row1.y_0
@@ -63,58 +61,10 @@ for i in range(13):
     x_f = x_0 - x_range + A[0]
     y_f = y_0 - y_range + A[1]
     
-    #file.loc[i,'x_f'] = x_f
-    #file.loc[i,'y_f'] = y_f
-    file.loc[183+i,'x_f'] = x_f
-    file.loc[183+i,'y_f'] = y_f
+    file.loc[i,'x_f'] = x_f
+    file.loc[i,'y_f'] = y_f
     
     
     print( "<x= {0:.3f}, y={1:.3f}>".format(x_f,y_f))
     
-file.to_excel('C:/Users/Cjmul/OneDrive/Desktop/College, Baby/Final Year/Final Year Project/Python_Files/Pandas_path.xlsx', index=False)
-
-#%%
-file = pd.read_excel('C:/Users/Cjmul/OneDrive/Desktop/College, Baby/Final Year/Final Year Project/Python_Files/Pandas_path.xlsx')
-row1 = file.iloc[195]
-print(row1)
-#%%
-path = row1.Path
-x_0 = int(row1.x_0)
-y_0 = int(row1.y_0)
-x_range = int(row1.x_range)
-y_range = int(row1.y_range)
-
-diffy = y_0 - y_range
-#%%
-
-A = Gaussian_func(path, x_0, y_0, x_range, y_range)
-
-#%%
-x_f = x_0 - x_range + A[0]
-y_f = y_0 - y_range + A[1]
-#%%
-#%%  
-file = pd.read_excel("C:/Users/Cjmul/OneDrive/Desktop/College, Baby/Final Year/Final Year Project/Python_Files/abc.xlsx")
-
-for i in range(8):
-     row1 = file.iloc[i]
-     #print(row1)
-     path = row1.Path
-     x_0 = row1.x_0
-     y_0 = row1.y_0
-     x_range = row1.x_range
-     y_range = row1.y_range
-     
-
-
-     A = Gaussian_func(path, x_0, y_0, x_range, y_range)
-     
-     x_f = x_0 - x_range + A[0]
-     y_f = y_0 - y_range + A[1]
-     
-     file.loc[i,'x_f'] = x_f
-     file.loc[i,'y_f'] = y_f
-     
-     print( "<x= {0:.3f}, y={1:.3f}>".format(x_f,y_f))
-     
-file.to_excel("C:/Users/Cjmul/OneDrive/Desktop/College, Baby/Final Year/Final Year Project/Python_Files/abc.xlsx", index=False)
+file.to_excel('Pandas_path.xlsx', index=False)
